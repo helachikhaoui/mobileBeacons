@@ -1,0 +1,82 @@
+package com.awesomeproject;
+
+import com.facebook.react.ReactActivity;
+import com.mmazzarolo.beaconsandroid.BeaconsAndroidPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+import com.oney.gcm.GcmPackage;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import com.magus.fblogin.FacebookLoginPackage;
+import com.burnweb.rnpermissions.RNPermissionsPackage;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.PowerManager ;
+import android.bluetooth.BluetoothAdapter ;
+
+
+public class MainActivity extends ReactActivity {
+ private PowerManager.WakeLock mWakeLock;
+ BroadcastReceiver mBroadcastReceiver1 = new BTChangeReceiever() ;
+ boolean serviceOn=false;
+
+    /**
+     * Returns the name of the main component registered from JavaScript.
+     * This is used to schedule rendering of the component.
+     */
+    @Override
+    protected String getMainComponentName() {
+        return "AwesomeProject";
+    }
+   @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
+    }
+    @Override
+protected void onPause() {
+ super.onPause();
+ IntentFilter filter1 = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+ registerReceiver(mBroadcastReceiver1, filter1);
+ serviceOn=true;
+ mWakeLock.release();
+}//End of onPause
+
+@Override
+protected void onResume() {
+/*  IntentFilter filter1 = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+  IntentFilter filter2 = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
+    IntentFilter filter3 = new IntentFilter(  Intent.ACTION_USER_PRESENT);
+      IntentFilter filter4 = new IntentFilter(  Intent.ACTION_SCREEN_OFF);
+  BroadcastReceiver mBroadcastReceiver1 = new BTChangeReceiever() ;
+  registerReceiver(mBroadcastReceiver1, filter1);
+  registerReceiver(mBroadcastReceiver1, filter2);
+  registerReceiver(mBroadcastReceiver1, filter3);
+  registerReceiver(mBroadcastReceiver1, filter4);*/
+    //  unregisterReceiver(mBroadcastReceiver1);
+      //serviceOn=false;
+ super.onResume();
+ mWakeLock.acquire();
+}//
+
+    @Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    if( serviceOn)
+    unregisterReceiver(mBroadcastReceiver1);
+
+    IntentFilter filter1 = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+    IntentFilter filter2 = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
+      IntentFilter filter3 = new IntentFilter(  Intent.ACTION_USER_PRESENT);
+        IntentFilter filter4 = new IntentFilter(  Intent.ACTION_SCREEN_OFF);
+    registerReceiver(mBroadcastReceiver1, filter1);
+    registerReceiver(mBroadcastReceiver1, filter2);
+    registerReceiver(mBroadcastReceiver1, filter3);
+    registerReceiver(mBroadcastReceiver1, filter4);
+    PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
+    mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK |PowerManager.ON_AFTER_RELEASE, "My Tag");
+}
+
+}
