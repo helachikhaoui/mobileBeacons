@@ -6,6 +6,7 @@ import com.facebook.FacebookSdk;
 import android.support.v7.app.AppCompatDelegate;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
 import com.mackentoch.beaconsandroid.BeaconsAndroidPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -29,6 +30,7 @@ import android.os.Bundle;
 import android.bluetooth.BluetoothAdapter ;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
+import io.invertase.firebase.RNFirebasePackage;
 
 public class MainApplication extends Application implements ReactApplication {
   private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
@@ -43,7 +45,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new FBSDKPackage(mCallbackManager),
             new ReactNativePushNotificationPackage(),
-            new BeaconsAndroidPackage()
+            new BeaconsAndroidPackage(),	
+	    new RNFirebasePackage()
 
       );
     }
@@ -64,17 +67,17 @@ public class MainApplication extends Application implements ReactApplication {
     FacebookSdk.sdkInitialize(getApplicationContext());
     AppEventsLogger.activateApp(this);
     SoLoader.init(this,false);
-    IntentFilter filter1 = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+  /*  IntentFilter filter1 = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
     IntentFilter filter2 = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
       IntentFilter filter3 = new IntentFilter(  Intent.ACTION_USER_PRESENT);
         IntentFilter filter4 = new IntentFilter(  Intent.ACTION_SCREEN_OFF);
-        
+
 
     BroadcastReceiver mBroadcastReceiver1 = new BTChangeReceiever() ;
     registerReceiver(mBroadcastReceiver1, filter1);
     registerReceiver(mBroadcastReceiver1, filter2);
     registerReceiver(mBroadcastReceiver1, filter3);
-    registerReceiver(mBroadcastReceiver1, filter4);
+    registerReceiver(mBroadcastReceiver1, filter4);*/
 
   }
 

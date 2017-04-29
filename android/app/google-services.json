@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "44222234202",
-    "firebase_url": "https://backendhotel.firebaseio.com",
-    "project_id": "backendhotel",
-    "storage_bucket": "backendhotel.appspot.com"
+    "project_number": "986319258083",
+    "firebase_url": "https://hotelproject-4c6d6.firebaseio.com",
+    "project_id": "hotelproject-4c6d6",
+    "storage_bucket": "hotelproject-4c6d6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:44222234202:android:bdda3018bb58ca0a",
+        "mobilesdk_app_id": "1:986319258083:android:ac90014cfc15b7d6",
         "android_client_info": {
           "package_name": "com.awesomeproject"
         }
       },
       "oauth_client": [
         {
-          "client_id": "44222234202-m04amnj1map4efd85bp38p1s016rug3j.apps.googleusercontent.com",
+          "client_id": "986319258083-70h0v1sbjbmfguira3v5fsev3mbt7hco.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBzidJKF9fp16lajgrxLB058JsUMc2NU3Q"
+          "current_key": "AIzaSyAGHu1XkpcDTgtCcQnwGdnFVz8520jhIaI"
         }
       ],
       "services": {

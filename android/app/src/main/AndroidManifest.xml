@@ -46,18 +46,18 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".BTChangeReceiever" >
+      <!--  <receiver android:name=".BTChangeReceiever" >
           <intent-filter>
               <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
               <action android:name="android.intent.action.BOOT_COMPLETED" />
               <action android:name="android.intent.action.ACTION_USER_PRESENT" />
               <action android:name="android.intent.action.ACTION_SCREEN_OFF" />
-                   <action android:name="android.intent.action.TIME_TICK"/>      
+                   <action android:name="android.intent.action.TIME_TICK"/>
               <action android:name="android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED" />
               <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
               <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
           </intent-filter>
-        </receiver>
+        </receiver>-->
         <service android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationRegistrationService"/>
         <service
             android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerService"

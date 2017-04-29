@@ -25,9 +25,10 @@ public class BTChangeReceiever extends BroadcastReceiver {
 
               //case BluetoothAdapter.STATE_TURNING_ON:
                 if(!isAppOnForeground((context))){
-                        Intent serviceIntent = new Intent(context, BeaconsScanService.class);
+              /*          Intent serviceIntent = new Intent(context, BeaconsScanService.class);
+                        serviceIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         context.startService(serviceIntent);
-                        HeadlessJsTaskService.acquireWakeLockNow(context);
+                        HeadlessJsTaskService.acquireWakeLockNow(context);*/
                 }
 
                   //  break;

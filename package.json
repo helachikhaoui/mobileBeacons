@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "babel": "^6.23.0",
+    "firebase": "^3.8.0",
     "react": "15.4.2",
     "react-native": "^0.41.2",
     "react-native-android-facebook-login": "^0.1.1",
@@ -17,11 +18,14 @@
     "react-native-bluetooth-state": "^2.0.0",
     "react-native-facebook-login": "^1.4.0",
     "react-native-fbsdk": "^0.5.0",
+    "react-native-firebase": "^1.0.0-alpha12",
+    "react-native-firestack": "^2.3.9",
     "react-native-gcm-push-notification": "^1.0.3",
     "react-native-push-notification": "^2.2.1",
     "react-native-storage": "^0.1.5",
     "react-navigation": "^1.0.0-beta.7",
-    "undefined": "^0.1.0"
+    "undefined": "^0.1.0",
+    "yarn": "^0.22.0"
   },
   "devDependencies": {
     "babel-jest": "18.0.0",

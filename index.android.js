@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { AppRegistry, Navigator } from 'react-native';
-
 import Login from './Login';
 import beaconsInfo from './beaconsInfo';
 

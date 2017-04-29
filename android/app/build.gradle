@@ -126,7 +126,7 @@ android {
 }
 
 dependencies {
-
+    compile project(':react-native-firebase')
     compile project(':react-native-beacons-android')
     compile project(':react-native-push-notification')
     compile project(':react-native-gcm-push-notification')
@@ -140,6 +140,7 @@ dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile 'com.android.support:support-annotations:+'
     compile ('com.google.android.gms:play-services-gcm:9.0.0')
+    compile 'com.google.firebase:firebase-core:9.6.1'
 
 
 
@@ -152,3 +153,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+apply plugin: 'com.google.gms.google-services'

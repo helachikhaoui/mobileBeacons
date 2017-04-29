@@ -41,6 +41,7 @@
 		C979A37215E0423EB79391CF /* libRNGCM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8283F13F721348A9B04440E7 /* libRNGCM.a */; };
 		34C9A5F58462475587B0DAFE /* libRNBluetoothState.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A1FC2C4A2400B9C19B79D /* libRNBluetoothState.a */; };
 		B7FDA9DDE1CC473D8C70B7AB /* libRNBackgroundJob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EAD787B0D6439BA27B273B /* libRNBackgroundJob.a */; };
+		A3E67136D72A459498FD77CD /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DDBA9EB29546748F9AF842 /* libRNFirebase.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,6 +273,8 @@
 		8A6A1FC2C4A2400B9C19B79D /* libRNBluetoothState.a */ = {isa = PBXFileReference; name = "libRNBluetoothState.a"; path = "libRNBluetoothState.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		6EC580344DCD4BA5928791A2 /* RNBackgroundJob.xcodeproj */ = {isa = PBXFileReference; name = "RNBackgroundJob.xcodeproj"; path = "../node_modules/react-native-background-job/ios/RNBackgroundJob.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		D2EAD787B0D6439BA27B273B /* libRNBackgroundJob.a */ = {isa = PBXFileReference; name = "libRNBackgroundJob.a"; path = "libRNBackgroundJob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		2D9B7B3BEBFF4A8FB540F644 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; name = "RNFirebase.xcodeproj"; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		63DDBA9EB29546748F9AF842 /* libRNFirebase.a */ = {isa = PBXFileReference; name = "libRNFirebase.a"; path = "libRNFirebase.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +307,7 @@
 				C979A37215E0423EB79391CF /* libRNGCM.a in Frameworks */,
 				34C9A5F58462475587B0DAFE /* libRNBluetoothState.a in Frameworks */,
 				B7FDA9DDE1CC473D8C70B7AB /* libRNBackgroundJob.a in Frameworks */,
+				A3E67136D72A459498FD77CD /* libRNFirebase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +480,7 @@
 				9B5C91F71A1540A5AAC95F39 /* RNGCM.xcodeproj */,
 				25D54374D8BC477086DBFE52 /* RNBluetoothState.xcodeproj */,
 				6EC580344DCD4BA5928791A2 /* RNBackgroundJob.xcodeproj */,
+				2D9B7B3BEBFF4A8FB540F644 /* RNFirebase.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1003,6 +1008,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeProject.app/AwesomeProject";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1023,6 +1029,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeProject.app/AwesomeProject";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;
@@ -1087,6 +1094,7 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1116,6 +1124,7 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;
@@ -1140,6 +1149,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1164,6 +1174,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;

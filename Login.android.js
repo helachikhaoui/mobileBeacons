@@ -2,8 +2,12 @@
 import beaconsInfo from './beaconsInfo';
 import { StackNavigator,TabNavigator } from 'react-navigation';
 import React, { Component } from 'react';
+import Container from './login/Container';
+import LogButton from './login/LogButton';
+import Label from './login/Label'
+import Gallery from './App';
 
-const { AppRegistry, View, Image, Navigator,Button} = require('react-native');
+const { AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
 const FBSDK = require('react-native-fbsdk');
 
 const {
@@ -27,27 +31,22 @@ var PushNotification = require('react-native-push-notification');
         title: myscene
     })
   }
-  logout(token){
-  fetch('http://192.168.137.109:3000/userConnect/'+token, {
-      method: 'delete',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    })
+  press() {
+  alert("hi");
 }
 
     render() {
       const { navigate } = this.props.navigation;
 
+      let width = Dimensions.get('window').width
 
         return (
-            <View>
-            <Button
-          onPress={() => navigate('Beacons')}
-          title="Show beacons"
-        />
-               <LoginButton
+          <Image  source={require('./l.jpg')}  style={styles.backgroundImage}>
+            <ScrollView style={styles.scroll}>
+
+ <View style={styles.container}>
+                <LoginButton
+
                 permissions={["email","user_friends"]}
                  readPermissions={['public_profile','email','user_friends']}
                   onLoginFinished={
@@ -61,53 +60,6 @@ var PushNotification = require('react-native-push-notification');
                           (data) => {
                              accessToken = data.accessToken;
                               tokenReg="";
-                              console.log( 'SIGN IN done' );
-
-                            /* PushNotification.configure({
-
-                               onRegister: function(token) {
-                                 console.log( 'REGREGRGEGRGEGEGEGE' );
-
-                                   console.log( 'TOKEN:', token );
-                                    tokenReg = token.token;
-                                    fetch('http://192.168.1.10:3000/userConnect', {
-                                        method: 'POST',
-                                        headers: {
-                                          'Accept': 'application/json',
-                                          'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify({
-                                          id:tokenReg
-                                        })
-                                      })
-
-                                  const responseInfoCallback = (error, result) => {
-                                      if (error) {
-                                        console.log(error)
-                                        alert('Error fetching data: ' + error.toString());
-                                      } else {
-                                        console.log(result);
-
-                                      }
-                                    }
-
-                              },
-
-                                 // (required) Called when a remote or local notification is opened or received
-                                 onNotification: function(notification) {
-                                    // console.log( 'Heyyyyyyyyyyyyy:',notification);
-                                  //   this.onNotification("Hey");
-                                 },
-                                 // ANDROID ONLY: GCM Sender ID (optional - not required for local notifications, but is need to receive remote push notifications)
-                                 senderID: '44222234202' ,
-                                 popInitialNotification: true,
-                                 requestPermissions: true
-
-
-                             });
-
-                            PushNotification.requestPermissions();*/
-                            navigate('Beacons')
                             const infoRequest = new GraphRequest(
                               '/me',
                               {
@@ -118,11 +70,10 @@ var PushNotification = require('react-native-push-notification');
                                   }
                                 }
                               },
-                              //responseInfoCallback
                             );
 
-                            // Start the graph request.
                             new GraphRequestManager().addRequest(infoRequest).start()
+                            navigate('Events')
 
                           }
                         )
@@ -131,14 +82,84 @@ var PushNotification = require('react-native-push-notification');
                     }
                   }
                   onLogoutFinished={() =>console.log("bye")}/>
+                  <Text style={styles.footer}>Or sign in with an other account </Text>
 
-            </View>
+                  </View>
+
+                  <Container>
+
+              <Label text="Email"/>
+              <TextInput
+                  style={styles.textInput}/>
+          </Container>
+          <Container>
+              <Label text="Password"/>
+              <TextInput
+                  secureTextEntry={true}
+                  style={styles.textInput}/>
+          </Container>
+          <Container style={styles.footer}>
+              <LogButton
+                  label="Sign In"
+                  styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
+                  />
+          </Container>
+          <Container>
+          <LogButton
+                  label="You don't have an account ?"
+                  styles={{button: styles.alignRight, label: styles.label}}
+                  onPress={this.press.bind(this)}
+                />
+          </Container>
+                  </ScrollView>
+                  </Image>
 
         );
 
 }}
+
+const styles = StyleSheet.create({
+  scroll: {
+      padding: 30,
+      flexDirection: 'column'
+
+  },
+  container: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: 30,},
+  buttonWhiteText: {
+    fontSize:17,
+    color: '#FFF',
+},
+buttonBlackText: {
+    fontSize: 20,
+    color: '#595856'
+},
+primaryButton: {
+    backgroundColor: '#36a8fd'
+},
+footer: {
+   marginTop: 20
+},
+backgroundImage: {
+  flex: 1,
+  width: undefined,
+  height: undefined,
+  backgroundColor:'transparent',
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+label: {
+    color: '#FFF',
+    fontSize: 15
+}
+});
+
+
 const LoginPage = TabNavigator({
   Home: { screen: Login },
-  Beacons: { screen: beaconsInfo }
+  Events:{ screen: Gallery }
 });
 AppRegistry.registerComponent('AwesomeProject', () => LoginPage);
