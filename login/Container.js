@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
- 
+
 import {
   StyleSheet,
   View
 } from 'react-native';
- 
+
 const Container = (props) => {
     return (
         <View style={styles.labelContainer}>
@@ -12,11 +12,11 @@ const Container = (props) => {
         </View>
     );
 }
- 
+
 const styles = StyleSheet.create({
     labelContainer: {
-        marginBottom: 20
+        marginBottom: 8
     }
 });
- 
+
 export default Container;
