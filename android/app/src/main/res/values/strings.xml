@@ -1,13 +1,4 @@
 <resources>
-
-
-
-
-
-
-
-
-
   <string name="facebook_app_id">690400651165456</string>
-    <string name="app_name">AwesomeProject</string>
+    <string name="app_name">HotelApplication</string>
 </resources>

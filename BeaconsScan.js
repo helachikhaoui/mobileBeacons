@@ -16,24 +16,17 @@ var PushNotification = require('react-native-push-notification');
 var tokenReg = "";
 
 module.exports = async(taskData) => { // do stuff
-    //console.log('BACKGROUND SCAN');
     PushNotification.configure({
 
         onRegister: function(token) {
-            //   console.log( 'TOKEN:', token );
             tokenReg = token.token;
-            /* this.setState({
-                 id_reg: tokenReg
-             });*/
+
 
         },
 
-        // (required) Called when a remote or local notification is opened or received
         onNotification: function(notification) {
-            //  console.log( 'Heyyyyyyyyyyyyy:',notification);
             //   this.onNotification("Hey");
         },
-        // ANDROID ONLY: GCM Sender ID (optional - not required for local notifications, but is need to receive remote push notifications)
         senderID: " 44222234202",
         popInitialNotification: true,
         requestPermissions: false
@@ -68,17 +61,16 @@ module.exports = async(taskData) => { // do stuff
         console.log(`Beacons monitoring not started, error: ${error}`)
     }
 
-    // console.log( 'TOKEN:');
 
     // Ranging:
 
-    /*  DeviceEventEmitter.addListener('beaconsDidRange', (data) => {
+  /*    DeviceEventEmitter.addListener('beaconsDidRange', (data) => {
              var beacon =data.beacons;
             if(beacon.length === 0)
             console.log('');
             else {
-            // console.log('Found beacons, ranging!', data);
-          //   console.log('UUID!',beacon[0].uuid);
+             console.log('Found beacons, ranging!', data);
+             console.log('UUID!',beacon[0].uuid);
 
               fetch('http://192.168.1.10:3000/userConnect', {
                   method: 'POST',
@@ -102,7 +94,7 @@ module.exports = async(taskData) => { // do stuff
         console.log('Entered new beacons region!', data);
         var beacon = data;
 
-        fetch('http://192.168.1.10:3000/userConnect', {
+        fetch('http://192.168.43.81:3000/userConnect', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -124,7 +116,7 @@ module.exports = async(taskData) => { // do stuff
             identifier,
             uuid
         }));
-        fetch('http://192.168.1.10:3000/userConnect', {
+        fetch('http://192.168.43.81:3000/userConnect', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

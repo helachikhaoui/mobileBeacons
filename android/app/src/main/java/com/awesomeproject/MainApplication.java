@@ -6,6 +6,7 @@ import com.facebook.FacebookSdk;
 import android.support.v7.app.AppCompatDelegate;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.facebook.react.ReactApplication;
+import com.smixx.reactnativeicons.ReactNativeIcons;
 import io.invertase.firebase.RNFirebasePackage;
 import com.mackentoch.beaconsandroid.BeaconsAndroidPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
@@ -43,6 +44,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeIcons(),
             new FBSDKPackage(mCallbackManager),
             new ReactNativePushNotificationPackage(),
             new BeaconsAndroidPackage(),	

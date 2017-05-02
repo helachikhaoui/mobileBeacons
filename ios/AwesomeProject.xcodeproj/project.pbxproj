@@ -42,6 +42,7 @@
 		34C9A5F58462475587B0DAFE /* libRNBluetoothState.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6A1FC2C4A2400B9C19B79D /* libRNBluetoothState.a */; };
 		B7FDA9DDE1CC473D8C70B7AB /* libRNBackgroundJob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EAD787B0D6439BA27B273B /* libRNBackgroundJob.a */; };
 		A3E67136D72A459498FD77CD /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DDBA9EB29546748F9AF842 /* libRNFirebase.a */; };
+		25FCA795C85945B98FEC6F92 /* libReactNativeIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B44644489E4A3A82C1EAA3 /* libReactNativeIcons.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,6 +276,8 @@
 		D2EAD787B0D6439BA27B273B /* libRNBackgroundJob.a */ = {isa = PBXFileReference; name = "libRNBackgroundJob.a"; path = "libRNBackgroundJob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		2D9B7B3BEBFF4A8FB540F644 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; name = "RNFirebase.xcodeproj"; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		63DDBA9EB29546748F9AF842 /* libRNFirebase.a */ = {isa = PBXFileReference; name = "libRNFirebase.a"; path = "libRNFirebase.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		E196AC6A1238482F897B50FA /* ReactNativeIcons.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeIcons.xcodeproj"; path = "../node_modules/react-native-icons/ios/ReactNativeIcons.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		09B44644489E4A3A82C1EAA3 /* libReactNativeIcons.a */ = {isa = PBXFileReference; name = "libReactNativeIcons.a"; path = "libReactNativeIcons.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +311,7 @@
 				34C9A5F58462475587B0DAFE /* libRNBluetoothState.a in Frameworks */,
 				B7FDA9DDE1CC473D8C70B7AB /* libRNBackgroundJob.a in Frameworks */,
 				A3E67136D72A459498FD77CD /* libRNFirebase.a in Frameworks */,
+				25FCA795C85945B98FEC6F92 /* libReactNativeIcons.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +485,7 @@
 				25D54374D8BC477086DBFE52 /* RNBluetoothState.xcodeproj */,
 				6EC580344DCD4BA5928791A2 /* RNBackgroundJob.xcodeproj */,
 				2D9B7B3BEBFF4A8FB540F644 /* RNFirebase.xcodeproj */,
+				E196AC6A1238482F897B50FA /* ReactNativeIcons.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1009,6 +1014,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1029,6 +1035,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeProject.app/AwesomeProject";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
@@ -1095,6 +1102,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1125,6 +1133,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;
@@ -1150,6 +1159,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1174,6 +1184,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};

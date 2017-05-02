@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'Verdana',
         marginBottom: 0,
-        color: '#595856'
+        color: '#4165c5'
     }
 });
 

@@ -90,16 +90,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',               // Arrange icon and rating in one line
     justifyContent: 'center',           // Center horizontally
   },
-  icon: {
-    width: 22,                          // Set width
-    height: 22,                         // Set height
-    marginRight: 5,                     // Add some margin between icon and rating
-  },
+
   value: {
-    fontSize: 16,                       // Smaller font size
+    fontSize: 30,
+    color:'yellow'                       // Smaller font size
   },
   plot: {
-    backgroundColor: 'rgba(255,255,255,0.5)', // Semi-transparent white background
+    backgroundColor: 'rgba(255,255,255,0.7)', // Semi-transparent white background
     borderRadius: 10,                   // Rounder corners
     marginTop: 40,                      // Margin at the top
     padding: 10,                        // Padding for content inside
@@ -123,4 +120,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',                // Center horizontally
   }
 });
-

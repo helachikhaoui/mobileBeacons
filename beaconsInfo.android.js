@@ -7,6 +7,7 @@ import {
     AppRegistry,
     StyleSheet,
     Text,
+    Image,
     ListView,
     View,
     DeviceEventEmitter,
@@ -44,6 +45,17 @@ export default class beaconsInfo extends Component {
             id_reg: null,
         };
     }
+    static navigationOptions = {
+    title: 'Beacons',
+    tabBar: {
+              icon: ({ tintColor }) => (
+                <Image
+                  source={require('./iconBeacon.png')}
+                  style={{width: 20, height: 20, tintColor: tintColor}}
+                />
+              ),
+          }
+  };
 
     componentWillMount() {
 
@@ -136,10 +148,23 @@ export default class beaconsInfo extends Component {
                         let message = "Welcome";
                         if (!connected) {
                             this.notification(value['-KiZe9Oxh-Nnq0eJwvlP'].identifier);
+
+                              fetch('http://192.168.43.170:3000/api/beacon', {
+                                  method: 'POST',
+                                  headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                  },
+                                  body: JSON.stringify({
+                                    id:tokenReg,
+                                    uuid:beacon[0].uuid,
+                                    date:fullDate
+                                  })
+                                })
                         } else {
                             console.log('TOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKEN', tokenReg);
 
-                            fetch('http://192.168.1.10:3000/userConnect', {
+                            fetch('http://192.168.43.81:3000/userConnect', {
                                 method: 'POST',
                                 headers: {
                                     'Accept': 'application/json',
@@ -152,7 +177,7 @@ export default class beaconsInfo extends Component {
                                 })
                             })
 
-                            /*  fetch('http://192.168.1.10:3000/api/beacon', {
+                              fetch('http://192.168.43.170:3000/api/beacon', {
                                   method: 'POST',
                                   headers: {
                                     'Accept': 'application/json',
@@ -163,7 +188,7 @@ export default class beaconsInfo extends Component {
                                     uuid:beacon[0].uuid,
                                     date:fullDate
                                   })
-                                })*/
+                                })
                         }
                     }
 
@@ -179,7 +204,7 @@ export default class beaconsInfo extends Component {
                     console.log('Entered new beacons region!', data);
                     var beacon = data;
 
-                    fetch('http://192.168.1.10:3000/userConnect', {
+                    fetch('http://192.168.43.81:3000/userConnect', {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -204,22 +229,6 @@ export default class beaconsInfo extends Component {
                     })) // Result of monitoring
                 })
             });
-
-
-
-
-        /*  try {
-firebase.database()
-  .ref('users/1234')
-  .set({
-    title: 'My awesome post',
-    content: 'Some awesome content',
-  });
-  } catch (err) {
-      console.log(` error: ${error}`)
-    }*/
-
-
 
     }
 
@@ -250,74 +259,46 @@ firebase.database()
         const {
             dataSource
         } = this.state;
-        return ( <
-            View style = {
-                styles.container
-            } >
-            <
-            Text style = {
-                styles.headline
-            } >
-            All beacons in the area <
-            /Text> <
-            ListView dataSource = {
-                dataSource
-            }
-            enableEmptySections = {
-                true
-            }
-            renderRow = {
-                this.renderRow
-            }
-            /> <
-            /View>
+        return ( <View style ={styles.container}>
+
+            <Text style = {styles.headline}>
+            All beacons in the area
+            </Text>
+            <ListView dataSource ={dataSource}
+            enableEmptySections = {true}
+            renderRow ={this.renderRow}/>
+             </View>
         );
     }
 
     renderRow = rowData => {
-        return ( <
-            View style = {
-                styles.row
-            } >
-            <
-            Text style = {
-                styles.smallText
-            } >
+        return (
+          <View style = {styles.row}>
+            <Text style = {styles.smallText}>
             UUID: {
                 rowData.uuid ? rowData.uuid : 'NA'
-            } <
-            /Text> <
-            Text style = {
+            } </Text>
+            <Text style = {
                 styles.smallText
-            } >
+            }>
             Major: {
                 rowData.major ? rowData.major : 'NA'
-            } <
-            /Text> <
-            Text style = {
-                styles.smallText
-            } >
+            } </Text>
+            <Text style = {styles.smallText} >
             Minor: {
                 rowData.minor ? rowData.minor : 'NA'
-            } <
-            /Text> <
-            Text >
+            } </Text>
+            <Text>
             RSSI: {
                 rowData.rssi ? rowData.rssi : 'NA'
-            } <
-            /Text> <
-            Text >
+            } </Text>
+            <Text>
             Proximity: {
                 rowData.proximity ? rowData.proximity : 'NA'
-            } <
-            /Text> <
-            Text >
-            Distance: {
-                rowData.accuracy ? rowData.accuracy.toFixed(2) : 'NA'
-            }
-            m <
-            /Text> <
-            /View>
+            } </Text>
+
+
+            </View>
         );
     }
 }

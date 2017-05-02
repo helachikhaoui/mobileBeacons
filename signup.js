@@ -5,6 +5,12 @@ import LogButton from './login/LogButton';
 import Label from './login/Label'
 import Gallery from './App';
 import RNFirebase from 'react-native-firebase';
+import { StackNavigator,TabNavigator } from 'react-navigation';
+import beaconsInfo from './beaconsInfo';
+import * as css from './css';
+import List from './App';
+
+
 const firebase = RNFirebase.initializeApp(configurationOptions);
 const configurationOptions = {
     debug: true,
@@ -22,8 +28,16 @@ export default class Signup extends Component {
 
 }
 
-  static navigationOptions = {
-  title: 'Sign up',
+static navigationOptions = {
+title: 'Profile',
+tabBar: {
+          icon: ({ tintColor }) => (
+            <Image
+              source={require('./iconProfile.png')}
+              style={{width: 20, height: 20, tintColor: tintColor}}
+            />
+          ),
+      }
 };
 
 press() {
@@ -45,7 +59,8 @@ press() {
 
   firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
   .then((user) => {
-  alert('Successful registration')
+    alert('Successful registration');
+  this.props.navigator.push({title: "login"})
 })
         .catch(error => {
           if(error.code=="auth/email-already-in-use")
@@ -68,7 +83,7 @@ press() {
     let width = Dimensions.get('window').width
 
       return (
-        <Image  source={require('./b5.png')}  style={styles.backgroundImage}>
+        <Image  source={require('./l11.jpeg')}  style={styles.backgroundImage}>
           <ScrollView style={styles.scroll}>
 
 <View style={styles.container}>
@@ -189,4 +204,6 @@ errorText: {
     color: 'red'
 }
 });
+
+
 AppRegistry.registerComponent('Signup', () => Signup);

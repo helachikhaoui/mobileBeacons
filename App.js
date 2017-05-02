@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   Navigator,    // Allows to navigate between different screens
   StatusBar,    // Allows to hide the status bar
-  Text
+  Text,
+  Image
 } from 'react-native';
 import List from './gallery';
 import Event from './Event';
@@ -26,6 +27,17 @@ const RouteMapper = (route, navigationOperations, onComponentRef) => {
 };
 
 export default class App extends Component {
+  static navigationOptions = {
+  title: 'Promotions',
+  tabBar: {
+            icon: ({ tintColor }) => (
+              <Image
+                source={require('./iconPromos.png')}
+                style={{width: 20, height: 20, tintColor: tintColor}}
+              />
+            ),
+        }
+};
   componentDidMount() {
     // Hide the status bar
     StatusBar.setHidden(true);

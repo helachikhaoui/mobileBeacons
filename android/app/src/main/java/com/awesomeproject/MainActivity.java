@@ -69,7 +69,7 @@ HeadlessJsTaskService.acquireWakeLockNow(this);
 
 @Override
 protected void onDestroy() {
-//super.onDestroy();
+super.onDestroy();
 //IntentFilter filter1 = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
 //registerReceiver(mBroadcastReceiver1, filter1);
 Intent serviceIntent = getIntent();
@@ -99,12 +99,12 @@ startService(serviceIntent);
     @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    Intent serviceIntent = new Intent(this, BeaconsScanService.class);
+    //Intent serviceIntent = new Intent(this, BeaconsScanService.class);
     //serviceIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
   //  serviceIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
      /* serviceIntent = getIntent();*/
-    startService(serviceIntent);
+    //startService(serviceIntent);
     //HeadlessJsTaskService.acquireWakeLockNow(this);
   /*  IntentFilter filter1 = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
     IntentFilter filter2 = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);

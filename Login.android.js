@@ -5,15 +5,20 @@ import React, { Component } from 'react';
 import Container from './login/Container';
 import LogButton from './login/LogButton';
 import Label from './login/Label'
-import Gallery from './App';
+import List from './App';
 import Signup from './signup';
+import * as css from './css';
+//import List from './gallery.js';
+
+
+
 const configurationOptions = {
     debug: true,
     persistence: true
 };
 import RNFirebase from 'react-native-firebase';
 const firebase = RNFirebase.initializeApp(configurationOptions);
-const { AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
+const { Link,AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
 const FBSDK = require('react-native-fbsdk');
 
 const {
@@ -23,10 +28,16 @@ const {
     AccessToken,
 
 } = FBSDK;
+
+
 var PushNotification = require('react-native-push-notification');
+
+
  export default class Login extends Component{
   constructor(props) {
     super(props);
+    console.log(props);
+
     this.state = {
       email: '',
       password: '',
@@ -34,21 +45,35 @@ var PushNotification = require('react-native-push-notification');
       emailError:"",
       passwordError:""
     }
+
   }
 
   static navigationOptions = {
   title: 'Accueil',
+  tabBar: {
+            icon: ({ tintColor }) => (
+              <Image
+                source={require('./iconHome.png')}
+                style={{width: 20, height: 20, tintColor: tintColor}}
+              />
+            ),
+        }
 };
 
     _navigateToSignup () {
       const { navigate } = this.props.navigation;
-
-      //alert(this.props.navigator)
         navigate('Signup')
   }
   press() {
-    this._navigateToSignup()
+    console.log('before nav');
+    return (
+      <Navigator
+        initialRoute={{title: "signup"}}
+        renderScene={ this.renderScene.bind(this)}
+      />
+    );
 }
+
 login() {
   if(this.state.passwordError!="")
     this.setState({"passwordError":""});
@@ -67,7 +92,9 @@ else{
 console.disableYellowBox = true;
 firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 .then((user) => {
-alert(' logged in')
+alert('Welcome');
+this.props.navigator.push({title: "gallery"})
+
 })
 .catch(error => {
   if(error.code=="auth/invalid-email")
@@ -83,12 +110,13 @@ alert(' logged in')
 }
 }
 
+
     render() {
 
-      let width = Dimensions.get('window').width
+      let width = Dimensions.get('window').width;
 
         return (
-          <Image  source={require('./b5.png')}  style={styles.backgroundImage}>
+          <Image  source={require('./l11.jpeg')}  style={styles.backgroundImage}>
             <ScrollView style={styles.scroll}>
 
  <View style={styles.container}>
@@ -120,7 +148,7 @@ alert(' logged in')
                             );
 
                             new GraphRequestManager().addRequest(infoRequest).start()
-                            navigate('Events')
+                            this.props.navigator.push({title: "gallery"})
 
                           }
                         )
@@ -147,6 +175,7 @@ alert(' logged in')
                   style={this.state.emailError ? styles.textInputError : styles.textInput }/>
           </Container>
           <Container>
+
           <Label text="Password"/><Text style={styles.errorText}>{this.state.passwordError}</Text>
               <TextInput
               ref= "password"
@@ -166,7 +195,8 @@ alert(' logged in')
           <LogButton
                   label="You don't have an account ?"
                   styles={{button: styles.alignRight, label: styles.label}}
-                  onPress={this.press.bind(this)}
+                  onPress={()=>this.props.navigator.push({title: "signup"})}
+
                 />
           </Container>
                   </ScrollView>
@@ -208,6 +238,8 @@ footer: {
    marginTop: 20,
    fontSize:13,
    fontWeight: 'bold',
+   color:'#215c6d'
+
 },
 backgroundImage: {
   flex: 1,
@@ -218,8 +250,9 @@ backgroundImage: {
   alignItems: 'center',
 },
 label: {
-    color: '#FFF',
-    fontSize: 15
+    color: '#3d7e87',
+    fontSize: 15,
+    fontWeight: 'bold'
 },
 textInput: {
  borderWidth: 1,
@@ -242,9 +275,6 @@ errorText: {
 });
 
 
-const LoginPage = StackNavigator({
-  Home: { screen: Login },
-  Events:{ screen: Gallery },
-  Signup: {screen: Signup}
-});
-AppRegistry.registerComponent('AwesomeProject', () => LoginPage);
+
+
+AppRegistry.registerComponent('LoginPage', () => Login);

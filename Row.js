@@ -17,7 +17,6 @@ export default class Row extends Component {
   render({ event, onPress } = this.props) {
 
     const { title, rating, image } = event;
-    var img = image;
     return (
       // Row press handler
       <TouchableOpacity
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 4,
   },
-  // Movie title
+  //  title
   title: {
     fontSize: 22,                       // Bigger font size
   },
@@ -80,13 +79,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',               // Arrange icon and rating in one line
   },
   // Certified fresh icon
-  icon: {
-    width: 22,                          // Set width
-    height: 22,                         // Set height
-    marginRight: 5,                     // Add some margin between icon and rating
-  },
+
   // Rating value
   value: {
-    fontSize: 16,                       // Smaller font size
+    fontSize: 30,
+    color: 'yellow'                       // Smaller font size
   },
 });
