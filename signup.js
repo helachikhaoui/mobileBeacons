@@ -129,6 +129,12 @@ press() {
                 styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
                 />
         </Container>
+        <LogButton
+                label="Already a member ?"
+                styles={{button: styles.alignRight, label: styles.label}}
+                onPress={()=>this.props.navigator.pop()}
+
+              />
 
                 </ScrollView>
                 </Image>
@@ -163,10 +169,13 @@ buttonBlackText: {
     color: '#595856'
 },
 primaryButton: {
-    backgroundColor: '#4165c5'
+  backgroundColor: '#3d7e87',
+  borderRadius:4,
+  padding:2,
 },
 description: {
-   marginTop: 0,
+   marginTop: 2,
+   marginBottom:13,
    fontSize: 20,
    fontFamily: 'Helvetica',
     fontWeight: 'bold'
@@ -182,8 +191,10 @@ backgroundImage: {
 
 },
 label: {
-    color: '#FFF',
-    fontSize: 15
+    color: '#3d7e87',
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginTop: 40,
 },
 textInput: {
  borderWidth: 1,
@@ -191,6 +202,7 @@ textInput: {
   height: 30,
   fontSize: 13,
   backgroundColor: 'transparent',
+  marginBottom:15
 },
 textInputError: {
  borderWidth: 1,

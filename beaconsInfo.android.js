@@ -52,14 +52,13 @@ export default class beaconsInfo extends Component {
     }
     static navigationOptions = {
     title: 'Beacons',
-    tabBar: {
-              icon: ({ tintColor }) => (
+    tabBarIcon: ({ tintColor }) => (
                 <Image
                   source={require('./iconBeacon.png')}
                   style={{width: 20, height: 20, tintColor: tintColor}}
                 />
               ),
-          }
+
   };
 
     componentWillMount() {

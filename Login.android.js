@@ -118,49 +118,12 @@ this.props.navigator.push({title: "gallery"})
         return (
           <Image  source={require('./l11.jpeg')}  style={styles.backgroundImage}>
             <ScrollView style={styles.scroll}>
+            <View style={styles.container}>
 
- <View style={styles.container}>
-                <LoginButton
-
-                permissions={["email","user_friends"]}
-                 readPermissions={['public_profile','email','user_friends']}
-                  onLoginFinished={
-                    (error, result) => {
-                      if (error) {
-                        alert("login has error: " + result.error);
-                      } else if (result.isCancelled) {
-                        alert("login is cancelled.");
-                      } else {
-                        AccessToken.getCurrentAccessToken().then(
-                          (data) => {
-                             accessToken = data.accessToken;
-                              tokenReg="";
-                            const infoRequest = new GraphRequest(
-                              '/me',
-                              {
-                                accessToken: accessToken,
-                                parameters: {
-                                  fields: {
-                                    string: 'age_range,email,gender,likes,name,first_name,middle_name,last_name'
-                                  }
-                                }
-                              },
-                            );
-
-                            new GraphRequestManager().addRequest(infoRequest).start()
-                            this.props.navigator.push({title: "gallery"})
-
-                          }
-                        )
-
-                      }
-                    }
-                  }
-                  onLogoutFinished={() =>console.log("bye")}/>
-                  <Text style={styles.footer}>Or sign in with an other account: </Text>
-
-                  </View>
-
+            <Image style={{width: 180, height:110,marginBottom:20}}
+              source={require('./logo.png')}
+            />
+            </View>
                   <Container>
 
               <Label text="Email"/><Text style={styles.errorText}>{this.state.emailError}</Text>
@@ -191,14 +154,59 @@ this.props.navigator.push({title: "gallery"})
 
                   />
           </Container>
-          <Container>
-          <LogButton
-                  label="You don't have an account ?"
-                  styles={{button: styles.alignRight, label: styles.label}}
-                  onPress={()=>this.props.navigator.push({title: "signup"})}
 
-                />
-          </Container>
+           <View style={styles.container}>
+
+                            <Text style={styles.footer}>Or </Text>
+            </View>
+            <View style={styles.container}>
+          <LoginButton
+
+          permissions={["email","user_friends"]}
+           readPermissions={['public_profile','email','user_friends']}
+            onLoginFinished={
+              (error, result) => {
+                if (error) {
+                  alert("login has error: " + result.error);
+                } else if (result.isCancelled) {
+                  alert("login is cancelled.");
+                } else {
+                  AccessToken.getCurrentAccessToken().then(
+                    (data) => {
+                       accessToken = data.accessToken;
+                        tokenReg="";
+                      const infoRequest = new GraphRequest(
+                        '/me',
+                        {
+                          accessToken: accessToken,
+                          parameters: {
+                            fields: {
+                              string: 'age_range,email,gender,likes,name,first_name,middle_name,last_name'
+                            }
+                          }
+                        },
+                      );
+
+                      new GraphRequestManager().addRequest(infoRequest).start()
+                      this.props.navigator.push({title: "gallery"})
+
+                    }
+                  )
+
+                }
+              }
+            }
+            onLogoutFinished={() =>console.log("bye")}/>
+            </View>
+
+            <Container>
+            <LogButton
+                    label="You don't have an account ?"
+                    styles={{button: styles.alignRight, label: styles.label}}
+                    onPress={()=>this.props.navigator.push({title: "signup"})}
+
+                  />
+            </Container>
                   </ScrollView>
                   </Image>
 
@@ -232,13 +240,14 @@ buttonBlackText: {
     color: '#595856'
 },
 primaryButton: {
-    backgroundColor: '#4165c5'
+    backgroundColor: '#3d7e87',
+    borderRadius:4,
+    padding:2,
 },
 footer: {
    marginTop: 20,
    fontSize:13,
    fontWeight: 'bold',
-   color:'#215c6d'
 
 },
 backgroundImage: {
@@ -252,7 +261,8 @@ backgroundImage: {
 label: {
     color: '#3d7e87',
     fontSize: 15,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginTop: 40,
 },
 textInput: {
  borderWidth: 1,

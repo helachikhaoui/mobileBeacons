@@ -21,7 +21,7 @@ const { Link,AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Na
       }
     renderScene(route,navigator) {
           if(route.title=="home")
-              return <Home {...this.props}
+              return <Login {...this.props}
               navigator={navigator}
               renderScene={this.renderScene.bind(this)} />
           if(route.title=="gallery")

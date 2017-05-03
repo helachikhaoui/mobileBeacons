@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
   },
   //  title
   title: {
-    fontSize: 22,                       // Bigger font size
+    fontSize: 22,
+                    // Bigger font size
   },
   // Rating row
   rating: {
