@@ -31,14 +31,13 @@ export default class App extends Component {
 
   static navigationOptions = {
   title: 'Promotions',
-  tabBar: {
-            icon: ({ tintColor }) => (
+  tabBarIcon: ({ tintColor }) => (
               <Image
                 source={require('./iconPromos.png')}
                 style={{width: 20, height: 20, tintColor: tintColor}}
               />
             ),
-        }
+        
 };
   componentDidMount() {
     // Hide the status bar

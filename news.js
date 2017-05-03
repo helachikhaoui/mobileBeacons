@@ -16,14 +16,13 @@ import NewsItem from './NewsItem';
 export default class News extends Component {
   static navigationOptions = {
   title: 'Activités',
-  tabBar: {
-            icon: ({ tintColor }) => (
+  tabBarIcon:  ({ tintColor }) => (
               <Image
                 source={require('./iconActivites.png')}
                 style={{width: 20, height: 20, tintColor: tintColor}}
               />
             ),
-        }
+        
 };
 
 	constructor(props) {

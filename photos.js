@@ -6,6 +6,7 @@ import * as css from './css';
 import beaconsInfo from './beaconsInfo';
 import List from './App';
 import News from './news';
+import HotelPhotos from './hotelPhotos';
 
 const {RefreshControl,ListView, AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
 
@@ -41,14 +42,14 @@ export default class Photos extends Component {
     }
   static navigationOptions = {
   title: 'Chambres et hébérgement',
-  tabBar: {
-            icon: ({ tintColor }) => (
+  tabBarIcon:
+            ({ tintColor }) => (
               <Image
-                source={require('./iconGallery.png')}
+                source={require('./iconChambres.png')}
                 style={{width: 20, height: 20, tintColor: tintColor}}
               />
             ),
-        }
+
 };
 
   /**
