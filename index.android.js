@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from './Login';
 import Home from './Home';
 import beaconsPage from './beaconsInfo';
-import EventsPage from'./events';
+import PhotosPage from'./photos';
 import Signup from './signup';
 import App from './App';
 import { StackNavigator,TabNavigator } from 'react-navigation';
@@ -25,7 +25,7 @@ const { Link,AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Na
               navigator={navigator}
               renderScene={this.renderScene.bind(this)} />
           if(route.title=="gallery")
-          return <EventsPage navigator={navigator}/>
+          return <PhotosPage navigator={navigator}/>
           if(route.title=="login")
           return <Login {...this.props} navigator={navigator}  />
           if(route.title=="signup")
