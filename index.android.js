@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Login from './Login';
 import Home from './Home';
-import beaconsInfo from './beaconsInfo';
+import beaconsPage from './beaconsInfo';
+import EventsPage from'./events';
 import Signup from './signup';
-import GalleryPage from './gallery';
+import App from './App';
 import { StackNavigator,TabNavigator } from 'react-navigation';
 import List from './App';
 import * as css from './css';
+import Event from './Event';
 
 const { Link,AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
 
@@ -19,15 +21,16 @@ const { Link,AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Na
       }
     renderScene(route,navigator) {
           if(route.title=="home")
-              return <Home  {...this.props}
+              return <Home {...this.props}
               navigator={navigator}
               renderScene={this.renderScene.bind(this)} />
           if(route.title=="gallery")
-          return <GalleryPage {...this.props} navigator={navigator}  />
+          return <EventsPage navigator={navigator}/>
           if(route.title=="login")
           return <Login {...this.props} navigator={navigator}  />
           if(route.title=="signup")
           return <Signup {...this.props} navigator={navigator}  />
+
 
 
         }

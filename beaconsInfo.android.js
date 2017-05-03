@@ -14,6 +14,11 @@ import {
     NetInfo
 } from 'react-native';
 import Beacons from 'react-native-beacons-manager';
+import { StackNavigator,TabNavigator } from 'react-navigation';
+import Signup from './signup';
+import Login from './Login';
+import List from './gallery';
+import * as css from './css';
 import RNFirebase from 'react-native-firebase';
 const configurationOptions = {
     debug: true,
@@ -328,4 +333,4 @@ const styles = StyleSheet.create({
     }
 });
 
-AppRegistry.registerComponent('beaconsInfo', () => beaconsInfo);
+AppRegistry.registerComponent('beaconsPage', () => beaconsInfo);

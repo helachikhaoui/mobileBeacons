@@ -3,15 +3,15 @@ import {
   Navigator,    // Allows to navigate between different screens
   StatusBar,    // Allows to hide the status bar
   Text,
-  Image
+  Image,
+  AppRegistry
 } from 'react-native';
-import List from './gallery';
+import GalleryPage from './gallery';
 import Event from './Event';
 const RouteMapper = (route, navigationOperations, onComponentRef) => {
   if (route.name === 'list') {
     return (
-      // TODO: Add List component
-<List navigator={navigationOperations} />
+<GalleryPage navigator={navigationOperations} />
     );
  }else if (route.name === 'event') {
     return (
@@ -20,6 +20,7 @@ const RouteMapper = (route, navigationOperations, onComponentRef) => {
         event={route.event}
         // Pass navigationOperations as navigator prop
         navigator={navigationOperations}
+        {...this.props}
       />
     );
   }
@@ -27,6 +28,7 @@ const RouteMapper = (route, navigationOperations, onComponentRef) => {
 };
 
 export default class App extends Component {
+
   static navigationOptions = {
   title: 'Promotions',
   tabBar: {
@@ -57,3 +59,4 @@ export default class App extends Component {
     );
   }
 }
+AppRegistry.registerComponent('App', () => App);

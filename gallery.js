@@ -48,6 +48,10 @@ import Row from './Row';
 
 
 export default class List extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+    }
   static navigationOptions = {
   title: 'Promotions',
   tabBar: {
@@ -135,23 +139,5 @@ render() {
     );
   }
 }
-const GalleryPage = TabNavigator(
-  {
-  Promotions: {screen: List},
-  Beacons : {screen: beaconsInfo}
 
-},
-
-  // navigator config
- {
-   lazyLoad: true, // render the tabs lazily
-       tabBarPosition: 'bottom', // where are the tabs shown
-       backBehavior: 'none', // back button doesn't take you to the initial tab
-       tabBarOptions: css.tabs
-
-  // label text
-}
-);
-
-module.exports=GalleryPage;
-AppRegistry.registerComponent('GalleryPage', () => GalleryPage);
+AppRegistry.registerComponent('GalleryPage', () => List);
