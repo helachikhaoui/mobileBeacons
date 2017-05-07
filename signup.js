@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 const { AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
 import Container from './login/Container';
-import LogButton from './login/LogButton';
+import CustomButton from './styles/CustomButton';
 import Label from './login/Label'
-import Gallery from './App';
 import RNFirebase from 'react-native-firebase';
 import { StackNavigator,TabNavigator } from 'react-navigation';
-import beaconsInfo from './beaconsInfo';
-import * as css from './css';
-import List from './App';
+import * as css from './styles/css';
 
 
 const firebase = RNFirebase.initializeApp(configurationOptions);
@@ -28,17 +25,7 @@ export default class Signup extends Component {
 
 }
 
-static navigationOptions = {
-title: 'Profile',
-tabBar: {
-          icon: ({ tintColor }) => (
-            <Image
-              source={require('./iconProfile.png')}
-              style={{width: 20, height: 20, tintColor: tintColor}}
-            />
-          ),
-      }
-};
+
 
 press() {
   this.setState({"emailError":""});
@@ -122,14 +109,14 @@ press() {
                 style={this.state.password2Error ? styles.textInputError : styles.textInput }/>
         </Container>
         <Container style={styles.footer}>
-            <LogButton
+            <CustomButton
                 label="Sign Up"
                 value={this.state.email}
                 onPress={this.press.bind(this)}
                 styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
                 />
         </Container>
-        <LogButton
+        <CustomButton
                 label="Already a member ?"
                 styles={{button: styles.alignRight, label: styles.label}}
                 onPress={()=>this.props.navigator.pop()}

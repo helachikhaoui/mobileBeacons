@@ -8,7 +8,7 @@ import {
   View                // Container component
 } from 'react-native';
 
-export default class Event extends Component {
+export default class PromotionRow extends Component {
 
   // Extract movie object passed as a prop from Row component
   render({ event } = this.props) {

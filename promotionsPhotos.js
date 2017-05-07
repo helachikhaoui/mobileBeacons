@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { StackNavigator,TabNavigator } from 'react-navigation';
-import Signup from './signup';
-import Login from './Login';
-import * as css from './css';
-import beaconsInfo from './beaconsInfo';
+import * as css from './styles/css';
 
 const {RefreshControl,ListView, AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
 
@@ -47,7 +44,7 @@ const demoData = [
 import Row from './Row';
 
 
-export default class List extends Component {
+export default class PromotionsPhotos extends Component {
   constructor(props) {
     super(props);
     console.log(props);
@@ -57,7 +54,7 @@ export default class List extends Component {
   tabBar: {
             icon: ({ tintColor }) => (
               <Image
-                source={require('./iconPromos.png')}
+                source={require('./icons/iconPromos.png')}
                 style={{width: 20, height: 20, tintColor: tintColor}}
               />
             ),
@@ -140,4 +137,4 @@ render() {
   }
 }
 
-AppRegistry.registerComponent('GalleryPage', () => List);
+AppRegistry.registerComponent('Promotions', () => PromotionPhotos);

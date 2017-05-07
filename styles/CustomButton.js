@@ -6,7 +6,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-const NewsButton = (props) => {
+const CustomButton = (props) => {
 
 	function getContent(){
 		if(props.children){
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default NewsButton;
+export default CustomButton;

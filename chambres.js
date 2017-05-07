@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { StackNavigator,TabNavigator } from 'react-navigation';
 import Signup from './signup';
 import Login from './Login';
-import * as css from './css';
-import beaconsInfo from './beaconsInfo';
-import List from './App';
-import News from './news';
-import HotelPhotos from './hotelPhotos';
+import * as css from './styles/css';
+import Promotions from './promotions';
+import Activities from './activities';
+import RowChambre from './RowChambre';
 
 const {RefreshControl,ListView, AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
 
@@ -32,21 +31,20 @@ const demoData = [
     large: 'chambre4',
   }
 ];
-import RowPhoto from './RowPhoto';
 
 
-export default class Photos extends Component {
+export default class Chambres extends Component {
   constructor(props) {
     super(props);
     console.log(props);
     }
   static navigationOptions = {
-  title: 'Chambres et hébérgement',
+  title: 'Chambres',
   tabBarIcon:
             ({ tintColor }) => (
               <Image
-                source={require('./iconChambres.png')}
-                style={{width: 20, height: 20, tintColor: tintColor}}
+                source={require('./icons/iconChambres.png')}
+                style={{width: 25, height: 25, tintColor: tintColor}}
               />
             ),
 
@@ -91,7 +89,7 @@ export default class Photos extends Component {
    */
    _renderRow = (event) => {
     return (
-      <RowPhoto
+      <RowChambre
         // Pass movie object
         event={event}
         // Pass a function to handle row presses
@@ -121,11 +119,11 @@ render() {
   }
 }
 
-const PhotosPage = TabNavigator(
+const ChambresPage = TabNavigator(
   {
-  Photos : {screen: Photos},
-  Activités: { screen: News},
-  Promotions: {screen: List},
+  Chambres : {screen: Chambres},
+  Activités: { screen: Activities},
+  Promotions: {screen: Promotions},
 
 
 },
@@ -135,10 +133,9 @@ const PhotosPage = TabNavigator(
    lazyLoad: true, // render the tabs lazily
        tabBarPosition: 'bottom', // where are the tabs shown
        backBehavior: 'none', // back button doesn't take you to the initial tab
-       tabBarOptions: css.tabs
-
+       tabBarOptions: css.tabs,
   // label text
 }
 );
-module.exports=PhotosPage;
-AppRegistry.registerComponent('GalleryPage', () => PhotosPage);
+module.exports=ChambresPage;
+AppRegistry.registerComponent('ChambresPage', () => ChambresPage);

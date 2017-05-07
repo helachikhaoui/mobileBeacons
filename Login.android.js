@@ -3,12 +3,10 @@ import beaconsInfo from './beaconsInfo';
 import { StackNavigator,TabNavigator } from 'react-navigation';
 import React, { Component } from 'react';
 import Container from './login/Container';
-import LogButton from './login/LogButton';
+import CustomButton from './styles/CustomButton';
 import Label from './login/Label'
-import List from './App';
 import Signup from './signup';
-import * as css from './css';
-//import List from './gallery.js';
+import * as css from './styles/css';
 
 
 
@@ -53,7 +51,7 @@ var PushNotification = require('react-native-push-notification');
   tabBar: {
             icon: ({ tintColor }) => (
               <Image
-                source={require('./iconHome.png')}
+                source={require('./icons/iconHome.png')}
                 style={{width: 20, height: 20, tintColor: tintColor}}
               />
             ),
@@ -121,7 +119,7 @@ this.props.navigator.push({title: "gallery"})
             <View style={styles.container}>
 
             <Image style={{width: 180, height:110,marginBottom:20}}
-              source={require('./logo.png')}
+              source={require('./images/logo.png')}
             />
             </View>
                   <Container>
@@ -147,7 +145,7 @@ this.props.navigator.push({title: "gallery"})
                   style={this.state.passwordError ? styles.textInputError : styles.textInput }/>
           </Container>
           <Container style={styles.footer}>
-              <LogButton
+              <CustomButton
                   label="Sign In"
                   styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
                   onPress={this.login.bind(this)}
@@ -200,7 +198,7 @@ this.props.navigator.push({title: "gallery"})
             </View>
 
             <Container>
-            <LogButton
+            <CustomButton
                     label="You don't have an account ?"
                     styles={{button: styles.alignRight, label: styles.label}}
                     onPress={()=>this.props.navigator.push({title: "signup"})}

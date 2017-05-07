@@ -12,7 +12,7 @@ import {
   Image,
   View
 } from 'react-native';
-import LogButton from './login/LogButton';
+import CustomButton from './styles/CustomButton';
 
 export default class Home extends Component {
   constructor(props) {

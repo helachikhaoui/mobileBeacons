@@ -6,19 +6,17 @@ import {
   Image,
   AppRegistry
 } from 'react-native';
-import GalleryPage from './gallery';
-import Event from './Event';
+import PromotionsPage from './promotionsPhotos';
+import PromotionRow from './promotionRow';
 const RouteMapper = (route, navigationOperations, onComponentRef) => {
   if (route.name === 'list') {
     return (
-<GalleryPage navigator={navigationOperations} />
+<PromotionsPage navigator={navigationOperations} />
     );
  }else if (route.name === 'event') {
     return (
-      <Event
-        // Pass movie object passed with route down as a prop
+      <PromotionRow
         event={route.event}
-        // Pass navigationOperations as navigator prop
         navigator={navigationOperations}
         {...this.props}
       />
@@ -27,17 +25,18 @@ const RouteMapper = (route, navigationOperations, onComponentRef) => {
 
 };
 
-export default class App extends Component {
+export default class Promotions extends Component {
 
   static navigationOptions = {
   title: 'Promotions',
   tabBarIcon: ({ tintColor }) => (
               <Image
-                source={require('./iconPromos.png')}
-                style={{width: 20, height: 20, tintColor: tintColor}}
+                source={require('./icons/iconPromos.png')}
+                style={{width: 25, height: 25, tintColor: tintColor}}
               />
             ),
-        
+
+
 };
   componentDidMount() {
     // Hide the status bar
@@ -58,4 +57,4 @@ export default class App extends Component {
     );
   }
 }
-AppRegistry.registerComponent('App', () => App);
+AppRegistry.registerComponent('Promotions', () => Promotions);

@@ -11,7 +11,7 @@ import Dimensions from 'Dimensions';
 // Detect screen size to calculate row height
 const screen = Dimensions.get('window');
 
-export default class RowPhoto extends Component {
+export default class RowChambre extends Component {
 
 
   render({ event, onPress } = this.props) {
@@ -67,15 +67,5 @@ const styles = StyleSheet.create({
     fontSize: 22,
                        // Bigger font size
   },
-  // Rating row
-  rating: {
-    flexDirection: 'row',               // Arrange icon and rating in one line
-  },
-  // Certified fresh icon
 
-  // Rating value
-  value: {
-    fontSize: 30,
-    color: 'yellow'                       // Smaller font size
-  },
 });

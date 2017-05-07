@@ -60,7 +60,7 @@ export const global = StyleSheet.create(
     },
     icon: {
       flex: -1,
-      margin: 8,
+      margin: 0,
       height: 100,
       width: 75,
       resizeMode: 'contain', //'cover' | 'contain'
@@ -100,13 +100,14 @@ export const tabs = {
     fontFamily: values.font_body,
     fontSize: 8,
   },
-  activeTintColor: colors.text_dark, // text color active tab
+  activeTintColor: '#FFF', // text color active tab
   showIcon: true,
-  inactiveTintColor: colors.text_medium, // text color inactive tab
-  indicatorStyle: {backgroundColor: colors.button_bg}, // active tab highlight top
+  inactiveTintColor: "#bdcacc", // text color inactive tab
+  indicatorStyle: {backgroundColor: "#FFF"},
+  upperCaseLabel: false, // active tab highlight top
   style: {
-    backgroundColor: colors.background_medium, // background color of tabs
-    borderTopColor: colors.background_light // active tab highlight bottom
+    backgroundColor: "#5f9a9f", // background color of tabs
+    borderTopColor: colors.background_light, // active tab highlight bottom
   }
 };
 

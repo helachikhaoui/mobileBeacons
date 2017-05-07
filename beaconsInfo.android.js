@@ -17,8 +17,7 @@ import Beacons from 'react-native-beacons-manager';
 import { StackNavigator,TabNavigator } from 'react-navigation';
 import Signup from './signup';
 import Login from './Login';
-import List from './gallery';
-import * as css from './css';
+import * as css from './styles/css';
 import RNFirebase from 'react-native-firebase';
 const configurationOptions = {
     debug: true,
@@ -54,7 +53,7 @@ export default class beaconsInfo extends Component {
     title: 'Beacons',
     tabBarIcon: ({ tintColor }) => (
                 <Image
-                  source={require('./iconBeacon.png')}
+                  source={require('./icons/iconBeacon.png')}
                   style={{width: 20, height: 20, tintColor: tintColor}}
                 />
               ),

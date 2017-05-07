@@ -8,50 +8,47 @@ import {
   Image
 } from 'react-native';
 
-import Button from './NewsButton';
+import CustomButton from './styles/CustomButton';
 
-const NewsItem = ({ news, index }) => {
+const ActivitiesItem = ({ activities, index }) => {
 
-	function getPretext(news) {
-		if(news.pretext){
+	function getPretext(activities) {
+		if(activities.pretext){
 			return (
-				<Text style={styles.pretext}>{news.pretext}</Text>
+				<Text style={styles.pretext}>{activities.pretext}</Text>
 			);
 		}
 	}
 
-	function onPress(news) {
-		alert(news.title);
-	}
+
 
 	let number = (index + 1).toString();
 
 	return (
-		<Button
+		<CustomButton
 			key={index}
 			noDefaultStyles={true}
-			onPress={onPress.bind(this, news)}
 		>
-			<View style={styles.news_item}>
-				<View style={styles.news_text}>
+			<View style={styles.activities_item}>
+				<View style={styles.activities_text}>
 					<View style={styles.number}>
 					</View>
 					<View style={styles.text_container}>
-						{ getPretext(news) }
-						<Text style={styles.title}>{news.title}</Text>
-						<Text>{news.summary}</Text>
+						{ getPretext(activities) }
+						<Text style={styles.title}>{activities.title}</Text>
+						<Text>{activities.summary}</Text>
 					</View>
 				</View>
-				<View style={styles.news_photo}>
-					<Image source={news.image} style={styles.photo} />
+				<View style={styles.activities_photo}>
+					<Image source={activities.image} style={styles.photo} />
 				</View>
 			</View>
-		</Button>
+		</CustomButton>
 	);
 }
 
 const styles = StyleSheet.create({
-	news_item: {
+	activities_item: {
 		flex: 1,
 		flexDirection: 'row',
 		paddingRight: 20,
@@ -61,7 +58,7 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		borderBottomColor: '#E4E4E4'
 	},
-	news_text: {
+	activities_text: {
 		flex: 2,
 		flexDirection: 'row',
 		padding: 10
@@ -80,7 +77,7 @@ const styles = StyleSheet.create({
 		color: '#3d7e87',
 		fontFamily: 'georgia'
 	},
-	news_photo: {
+	activities_photo: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center'
@@ -91,4 +88,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default NewsItem;
+export default ActivitiesItem;
