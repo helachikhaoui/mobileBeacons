@@ -6,38 +6,25 @@ import * as css from './styles/css';
 import Promotions from './promotions';
 import Activities from './activities';
 import RowChambre from './RowChambre';
+import Value from './chambresPhotos';
+import RNFirebase from 'react-native-firebase';
+const configurationOptions = {
+    debug: true,
+    persistence: true
+};
+const firebase = RNFirebase.initializeApp(configurationOptions);
 
 const {RefreshControl,ListView, AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
 
-const demoData = [
-  {
-    title: 'Suite à vue panoramique',
-    image: 'chambre1',
-    large: 'chambre1',
-  },
-  {
-    title: 'Double Vue Jardin ',
-    image: 'chambre2',
-    large: 'chambre2',
-  },
-  {
-    title: 'Double Communicante',
-    image: 'chambre3',
-    large: 'chambre3',
-  },
-  {
-    title: 'Star Prestige Suite ',
-    image: 'chambre4',
-    large: 'chambre4',
-  }
-];
+var demoData = [];
 
 
 export default class Chambres extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
-    }
+    this.fetchPhotos();
+    console.log("hello "+JSON.stringify(demoData));
+  }
   static navigationOptions = {
   title: 'Chambres',
   tabBarIcon:
@@ -70,18 +57,32 @@ export default class Chambres extends Component {
     this._fetchData();
   }
 
+  fetchPhotos(){
+
+        }
+
   /**
    * Prepare demo data for ListView component
    */
  _fetchData = () => {
+   const firebase = RNFirebase.initializeApp(configurationOptions);
+   firebase.database()
+       .ref('promotions')
+       .on('value', (snapshot) => {
+           value = snapshot.val();
+         var arr = Object.values(value);
+          var demoData2 = demoData.concat(arr);
+          this.setState({ isRefreshing: true });
+          this.setState({
+            // Fill up DataSource with demo data
+            dataSource: this.state.dataSource.cloneWithRows(demoData2),
+            // Data has been refreshed by now
+            isRefreshing: false,
+          });
+         // /demoData2.push(arr);
+         });
     // Data is being refreshed
-    this.setState({ isRefreshing: true });
-    this.setState({
-      // Fill up DataSource with demo data
-      dataSource: this.state.dataSource.cloneWithRows(demoData),
-      // Data has been refreshed by now
-      isRefreshing: false,
-    });
+
   }
 
   /**

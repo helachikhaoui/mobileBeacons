@@ -70,7 +70,7 @@ press() {
     let width = Dimensions.get('window').width
 
       return (
-        <Image  source={require('./l11.jpeg')}  style={styles.backgroundImage}>
+        <Image  source={require('./images/screen.jpeg')}  style={styles.backgroundImage}>
           <ScrollView style={styles.scroll}>
 
 <View style={styles.container}>
