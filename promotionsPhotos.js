@@ -1,46 +1,16 @@
 import React, { Component } from 'react';
 import { StackNavigator,TabNavigator } from 'react-navigation';
 import * as css from './styles/css';
+import RNFirebase from 'react-native-firebase';
+const configurationOptions = {
+    debug: true,
+    persistence: true
+};
+const firebase = RNFirebase.initializeApp(configurationOptions);
 
 const {RefreshControl,ListView, AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
 
-const demoData = [
-  {
-    title: 'Séjour et Téléphérique',
-    rating: 25,
-    image: 'teleph',
-    large: 'teleph',
-    plot: "Cette offre comprend Nuit + Petits déjeuners + billets téléphérique offerts, le tout avec une promotion de 25%",
-  },
-  {
-    title: 'Golf Break',
-    rating: 30,
-    image: 'golf',
-    large: 'golf',
-    plot: 'Golf Break: Petit déjeuner et Green Fee, Profitez d’un séjour dans l’un de nos hôtels proches d’un Golf, le petit déjeuner et un parcours de Golf par personne sont inclus, le tout pour une remise de 30%',
-  },
-  {
-    title: 'Jeux aquatiques',
-    rating: 30,
-    image: 'piscine',
-    large: 'piscine',
-    plot: 'Cette offre comprend un accès à nos piscines pour profiter des jeux aquatiques dédiés à vos enfants, qui vont bénéficier d’une réduction de 30%',
-  },
-  {
-    title: 'Pause gastronomique ',
-    rating: 20,
-    image: 'diner',
-    large: 'diner',
-    plot: 'Pour un déjeuner ou pour un dîner, venez savourez les meilleurs plats et goûtez aux délices culinaires de nos chefs, vous bénéficierez d’une réduction de 20% par personne',
-  },
-  {
-    title: 'Détente à l’espace spa',
-    rating: 40,
-    image: 'spa',
-    large: 'spa',
-    plot: 'Il est temps de vous accorder une pause cocooning pour un pur instant de bien-être du côté du spa de l’hôtel.Vivez une immersion entre terre et mer sur le sentier des vignes pour un voyage au cœur des traditions.',
-  }
-];
+const demoData=[];
 import Row from './Row';
 
 
@@ -84,17 +54,24 @@ export default class PromotionsPhotos extends Component {
   /**
    * Prepare demo data for ListView component
    */
- _fetchData = () => {
-    // Data is being refreshed
-    this.setState({ isRefreshing: true });
-    this.setState({
-      // Fill up DataSource with demo data
-      dataSource: this.state.dataSource.cloneWithRows(demoData),
-      // Data has been refreshed by now
-      isRefreshing: false,
-    });
-  }
+   _fetchData = () => {
+     const firebase = RNFirebase.initializeApp(configurationOptions);
+     firebase.database()
+         .ref('promotions')
+         .on('value', (snapshot) => {
+             value = snapshot.val();
+           var arr = Object.values(value);
+            var demoData2 = demoData.concat(arr);
+            this.setState({ isRefreshing: true });
+            this.setState({
+              // Fill up DataSource with demo data
+              dataSource: this.state.dataSource.cloneWithRows(demoData2),
+              // Data has been refreshed by now
+              isRefreshing: false,
+            });
+           });
 
+    }
   /**
    * Render a row
    */

@@ -38,16 +38,7 @@ export default class beaconsInfo extends Component {
         super(props);
 
         // Create our dataSource which will be displayed in the ListView
-        var ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
-        this.state = {
-            // region information
-            // React Native ListView datasource initialization
-            dataSource: ds.cloneWithRows([]),
-            region: null,
-            id_reg: null,
-        };
+
     }
     static navigationOptions = {
     title: 'Beacons',
@@ -62,7 +53,16 @@ export default class beaconsInfo extends Component {
 
     componentWillMount() {
 
-
+      var ds = new ListView.DataSource({
+          rowHasChanged: (r1, r2) => r1 !== r2
+      });
+      this.state = {
+          // region information
+          // React Native ListView datasource initialization
+          dataSource: ds.cloneWithRows([]),
+          region: null,
+          id_reg: null,
+      };
 
         Beacons.detectIBeacons();
         var region1 = {
@@ -71,7 +71,7 @@ export default class beaconsInfo extends Component {
         // Start detecting all iBeacons in the nearby
         try {
             Beacons.startRangingBeaconsInRegion('REGION1')
-            console.log(`Beacons ranging started succesfully!`)
+            console.log(`Beacons FGGGG ranging started succesfully!`)
         } catch (err) {
             console.log(`Beacons ranging not started, error: ${error}`)
         }
@@ -107,20 +107,13 @@ export default class beaconsInfo extends Component {
         });
 
         PushNotification.requestPermissions();
-        NetInfo.isConnected.addEventListener('change', this.handleConnectionChange);
-
-        NetInfo.isConnected.fetch().done(
-            (isConnected) => {
-                this.setState({
-                    status: isConnected
-                });
-            }
-        );
         const firebase = RNFirebase.initializeApp(configurationOptions);
         firebase.database()
             .ref('beacons')
             .on('value', (snapshot) => {
                 value = snapshot.val();
+                var arr = Object.values(value);
+
                 try {
                     const myRegion = {
                         identifier: 'REGION1',
@@ -128,7 +121,7 @@ export default class beaconsInfo extends Component {
 
                     };
                     Beacons.startMonitoringForRegion(myRegion)
-                    console.log(`Beacons monitoring started successfully`)
+                    console.log(`Beacons FGGGG monitoring started successfully`)
                 } catch (err) {
                     console.log(`Beacons monitoring not started, error: ${error}`)
                 }
@@ -139,20 +132,18 @@ export default class beaconsInfo extends Component {
                 var day = currentTime.getDate();
                 var year = currentTime.getFullYear();
                 var fullDate = day + '/' + month + '/' + year;
-                // console.log("YOOOOOOOOOOOOOOOOOOOOOOOOO",value['-KiZe9Oxh-Nnq0eJwvlP'].identifier);
 
                 DeviceEventEmitter.addListener('beaconsDidRange', (data) => {
                     var beacon = data.beacons;
                     if (beacon.length === 0)
                         console.log('');
                     else {
-                        console.log('Found beacons, ranging!', data, fullDate);
+                        console.log('Found beacons, FGGGG ranging!', data, fullDate);
 
                         let message = "Welcome";
-                        if (!connected) {
-                            this.notification(value['-KiZe9Oxh-Nnq0eJwvlP'].identifier);
+                            this.notification(arr[0].identifier);
 
-                              fetch('http://192.168.43.170:3000/api/beacon', {
+                          /*    fetch('http://192.168.43.170:3000/api/beacon', {
                                   method: 'POST',
                                   headers: {
                                     'Accept': 'application/json',
@@ -163,36 +154,7 @@ export default class beaconsInfo extends Component {
                                     uuid:beacon[0].uuid,
                                     date:fullDate
                                   })
-                                })
-                        } else {
-                            console.log('TOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKEN', tokenReg);
-
-                            fetch('http://192.168.43.81:3000/userConnect', {
-                                method: 'POST',
-                                headers: {
-                                    'Accept': 'application/json',
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    id: tokenReg,
-                                    uuid: beacon[0].uuid,
-                                    date: fullDate
-                                })
-                            })
-
-                              fetch('http://192.168.43.170:3000/api/beacon', {
-                                  method: 'POST',
-                                  headers: {
-                                    'Accept': 'application/json',
-                                    'Content-Type': 'application/json',
-                                  },
-                                  body: JSON.stringify({
-                                    id:tokenReg,
-                                    uuid:beacon[0].uuid,
-                                    date:fullDate
-                                  })
-                                })
-                        }
+                                })*/
                     }
 
                     this.setState({
@@ -201,26 +163,6 @@ export default class beaconsInfo extends Component {
                     // Result of ranging
                 })
 
-
-
-                DeviceEventEmitter.addListener('regionDidEnter', (data) => {
-                    console.log('Entered new beacons region!', data);
-                    var beacon = data;
-
-                    fetch('http://192.168.43.81:3000/userConnect', {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            id: tokenReg,
-                            uuid: beacon.uuid
-                        })
-                    })
-
-                    // Result of monitoring
-                })
 
                 DeviceEventEmitter.addListener('regionDidExit', ({
                     identifier,
@@ -244,7 +186,7 @@ export default class beaconsInfo extends Component {
 
 
             /* iOS and Android properties */
-            title: "Hotel Project", // (optional, for iOS this is only used in apple watch, the title will be the app name on other iOS devices)
+            title: "Marina Hotel", // (optional, for iOS this is only used in apple watch, the title will be the app name on other iOS devices)
             message: title, // (required)
         });
     }

@@ -40,7 +40,7 @@ const ActivitiesItem = ({ activities, index }) => {
 					</View>
 				</View>
 				<View style={styles.activities_photo}>
-					<Image source={activities.image} style={styles.photo} />
+					<Image source={{uri: activities.image}} style={styles.photo} />
 				</View>
 			</View>
 		</CustomButton>

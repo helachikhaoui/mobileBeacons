@@ -7,6 +7,11 @@ import CustomButton from './styles/CustomButton';
 import Label from './login/Label'
 import Signup from './signup';
 import * as css from './styles/css';
+import Storage  from 'react-native-storage';
+import RNFirebase from 'react-native-firebase';
+const firebase = RNFirebase.initializeApp(configurationOptions);
+const {  AsyncStorage,Link,AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
+const FBSDK = require('react-native-fbsdk');
 
 
 
@@ -14,10 +19,16 @@ const configurationOptions = {
     debug: true,
     persistence: true
 };
-import RNFirebase from 'react-native-firebase';
-const firebase = RNFirebase.initializeApp(configurationOptions);
-const { Link,AppRegistry,Text,TextInput,ScrollView, View, Image,  Dimensions, Navigator,Button,StyleSheet} = require('react-native');
-const FBSDK = require('react-native-fbsdk');
+var storage = new Storage({
+	size: 1000,
+	storageBackend: AsyncStorage,
+	defaultExpires: 1000 * 3600 * 24,
+	enableCache: true,
+
+	sync : {
+		// we'll talk about the details later.
+	}
+})
 
 const {
     LoginButton,
@@ -57,6 +68,21 @@ var PushNotification = require('react-native-push-notification');
             ),
         }
 };
+
+loginfb(){
+  storage.save({
+    key: 'connected',
+    rawData: "true"
+});
+}
+
+logoutfb(){
+  storage.save({
+    key: 'connected',
+    rawData: "false"
+});
+
+}
 
     _navigateToSignup () {
       const { navigate } = this.props.navigation;
@@ -171,6 +197,7 @@ this.props.navigator.push({title: "gallery"})
                 } else {
                   AccessToken.getCurrentAccessToken().then(
                     (data) => {
+                      this.loginfb();
                        accessToken = data.accessToken;
                         tokenReg="";
                       const infoRequest = new GraphRequest(
@@ -194,7 +221,7 @@ this.props.navigator.push({title: "gallery"})
                 }
               }
             }
-            onLogoutFinished={() =>console.log("bye")}/>
+            onLogoutFinished={() =>this.logoutfb()}/>
             </View>
 
             <Container>

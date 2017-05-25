@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { StackNavigator,TabNavigator } from 'react-navigation';
-import Signup from './signup';
-import Login from './Login';
+import beaconsInfo from './beaconsInfo';
 import * as css from './styles/css';
 import Promotions from './promotions';
 import Activities from './activities';
+import FormulaireCompteUtilisateur from './FormulaireCompteUtilisateur.js';
+import Signup from './signup.js';
 import RowChambre from './RowChambre';
-import Value from './chambresPhotos';
 import RNFirebase from 'react-native-firebase';
 const configurationOptions = {
     debug: true,
@@ -22,8 +22,6 @@ var demoData = [];
 export default class Chambres extends Component {
   constructor(props) {
     super(props);
-    this.fetchPhotos();
-    console.log("hello "+JSON.stringify(demoData));
   }
   static navigationOptions = {
   title: 'Chambres',
@@ -57,9 +55,6 @@ export default class Chambres extends Component {
     this._fetchData();
   }
 
-  fetchPhotos(){
-
-        }
 
   /**
    * Prepare demo data for ListView component
@@ -67,7 +62,7 @@ export default class Chambres extends Component {
  _fetchData = () => {
    const firebase = RNFirebase.initializeApp(configurationOptions);
    firebase.database()
-       .ref('promotions')
+       .ref('chambres')
        .on('value', (snapshot) => {
            value = snapshot.val();
          var arr = Object.values(value);
@@ -79,9 +74,7 @@ export default class Chambres extends Component {
             // Data has been refreshed by now
             isRefreshing: false,
           });
-         // /demoData2.push(arr);
          });
-    // Data is being refreshed
 
   }
 
@@ -124,7 +117,8 @@ const ChambresPage = TabNavigator(
   {
   Chambres : {screen: Chambres},
   Activités: { screen: Activities},
-  Promotions: {screen: Promotions},
+  Promotions: {screen: Promotions} ,
+  Compte : {screen: FormulaireCompteUtilisateur}
 
 
 },

@@ -13,11 +13,11 @@ export default class PromotionRow extends Component {
   // Extract movie object passed as a prop from Row component
   render({ event } = this.props) {
     // Extract values from movie object
-    const { title, rating, large, plot } = event;
+    const { title, rating, image, description } = event;
     return (
       <View style={styles.container}>
         {/* Background image with large image */}
-        <Image source={{uri: large}} style={styles.imageBackground}>
+        <Image source={{uri: image}} style={styles.imageBackground}>
           {/* Use ScrollView in case plot is too large to fit on the screen */}
           <ScrollView
             style={{flex: 1}}
@@ -36,7 +36,7 @@ export default class PromotionRow extends Component {
             </View>
             {/* Plot */}
             <View style={styles.plot}>
-              <Text style={styles.plotText}>{plot}</Text>
+              <Text style={styles.plotText}>{description}</Text>
             </View>
           </ScrollView>
           {/* Button container */}

@@ -36,16 +36,21 @@ public class MainActivity extends ReactActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
         MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
-        Intent serviceIntent = new Intent(this, BeaconsScanService.class);
-        startService(serviceIntent);
+        //Intent serviceIntent = new Intent(this, BeaconsScanService.class);
+      //  startService(serviceIntent);
+
+
+
     }
    @Override
 protected void onPause() {
  super.onPause();
- Intent serviceIntent = new Intent(this, BeaconsScanService.class);
- serviceIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+ //Intent serviceIntent = new Intent(this, BeaconsScanService.class);
+ //startService(serviceIntent);
+ //Intent serviceIntent = new Intent(this, BeaconsScanService.class);
  //serviceIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
- startService(serviceIntent);
+ //serviceIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+ //startService(serviceIntent);
  //HeadlessJsTaskService.acquireWakeLockNow(this);
  //HeadlessJsTaskService.acquireWakeLockNow(this);
 
@@ -70,10 +75,12 @@ HeadlessJsTaskService.acquireWakeLockNow(this);
 @Override
 protected void onDestroy() {
 super.onDestroy();
+//Intent serviceIntent = new Intent(this, BeaconsScanService.class);
+//startService(serviceIntent);
 //IntentFilter filter1 = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
 //registerReceiver(mBroadcastReceiver1, filter1);
-Intent serviceIntent = getIntent();
-startService(serviceIntent);
+//Intent serviceIntent = getIntent();
+//startService(serviceIntent);
 //serviceIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
 //HeadlessJsTaskService.acquireWakeLockNow(this);
@@ -99,6 +106,8 @@ startService(serviceIntent);
     @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    Intent serviceIntent = new Intent(this, BeaconsScanService.class);
+    startService(serviceIntent);
     //Intent serviceIntent = new Intent(this, BeaconsScanService.class);
     //serviceIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
